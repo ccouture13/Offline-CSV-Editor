@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optable Offline Column Re-mapper</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="main-container">
+    <div id="header">
+        <img src="assets/logo.svg" alt="Optable Logo" id="optable-logo">
+    </div>
+
+    <section id="file-upload-container">
+        <label for="csv-file">Upload CSV File:</label>
+        <input type="file" id="csv-file" accept=".csv" onchange="handleFileUpload()">
+    </section>
+
+    <table id="columns-container" hidden>
+        <h2>Remap Headers</h2>
+        <p>Here you'll find all of the headers from your file with any of the non supported headers highlighted in red. </p>
+    </table>
+
+    <div id="delimiter-container" hidden>
+        <div>
+            <div>Detected Delimiter: <span id="detected-delimiter"></span></div>
+            <div>
+                <input type="checkbox" id="change-delimiter-checkbox" onclick="toggleDelimiterField()">
+                <label for="change-delimiter-checkbox">Change Delimiter</label>
+                <input type="text" id="new-delimiter" placeholder="New Delimiter" disabled>
+            </div>
+        </div>
+    </div>
+    
+    <button id="save-button" onclick="saveUpdatedFile()" hidden>Save</button>
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

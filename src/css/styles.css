@@ -1,0 +1,112 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#main-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#optable-logo {
+    width: 400px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+#file-upload-container {
+    margin-bottom: 20px;
+}
+
+#columns-container {
+    margin: 20px 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#columns-container th, #columns-container td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#columns-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#save-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #005f5f;
+}
+
+#file-upload-container input[type="file"] {
+    margin-bottom: 20px;
+}
+
+#columns-container th, #columns-container td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#columns-container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.column-item label {
+    margin-left: 10px;
+}
+
+/* Style for the delimiter section to match the table */
+#delimiter-container {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    display: table;  /* Makes the div behave like a table */
+}
+
+#delimiter-container div {
+    display: table-row;  /* Makes the inner divs behave like table rows */
+}
+
+#delimiter-container div div {
+    display: table-cell;  /* Makes the innermost divs behave like table cells */
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#delimiter-container div div:first-child {
+    text-align: center;  /* Center text in the first cell */
+}
