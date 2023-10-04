@@ -63,20 +63,24 @@ p {
     border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
+    text-align: center;
+
 }
 
 #columns-container tr:nth-child(even) {
     max-width: 20px;
     background-color: #f2f2f2;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;  
+    text-align: center;
+  
 }
 
 .column-item td {
-    max-width: 150px;  /* Set max-width to 150px or as needed */
     overflow: hidden;  /* Hide overflow */
     text-overflow: ellipsis;  /* Display ellipsis for overflowed text */
     white-space: nowrap;  /* Keep text on a single line */
+    text-align: center;
 }
 
 #button-container {

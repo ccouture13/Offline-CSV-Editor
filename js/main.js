@@ -53,8 +53,8 @@ function displayHeaders() {
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = `
         <th>Index</th>
-        <th>Current Header</th>
-        <th>Header Modifier</th>
+        <th>Header</th>
+        <th>Modifier</th>
         <th>New Header</th>
     `;
     columnsContainer.appendChild(headerRow);
@@ -63,14 +63,14 @@ function displayHeaders() {
         columnItem.className = 'column-item';
         columnItem.innerHTML = `
             <td>${index + 1}</td>
-            <td>${header}</td>
+            <td style="min-width: 300px; max-width: 300px; text-align: left;">${header}</td>
             <td>
                 <div style="display: flex; align-items: center;">
                     <label class="switch">
                         <input type="checkbox" id="rename-${index}" onclick="toggleRenameField(${index})">
                         <span class="slider"></span>
                     </label>
-                    <label for="rename-${index}" style="margin-left: 10px; font-size: 14px">Enable</label>
+                    <label for="rename-${index}" style="margin-left: 10px; font-size: 14px">Modify</label>
                 </div>
             </td>
             <td>
