@@ -1,9 +1,10 @@
+HTML:
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optable Offline Column Re-mapper</title>
+    <title>Optable Offline CSV Editor</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -11,31 +12,51 @@
 
 <div id="main-container">
     <div id="header">
-        <img src="assets/logo.svg" alt="Optable Logo" id="optable-logo">
+        <img src="assets/title.svg" alt="Optable Logo" id="optable-logo">
     </div>
+    <p>Upload your file and this tool will automatically identify its delimiter and headers. Once detected, you can adjust the delimiter and remap headers. After modifications, save the updated file to your device, ready for uploading to your DCN.</p>
+    <p>This tool can be used offline and processing happens directly in your browser for added security.</p>
+    <hr class="solid">
 
     <section id="file-upload-container">
-        <label for="csv-file">Upload CSV File:</label>
-        <input type="file" id="csv-file" accept=".csv" onchange="handleFileUpload()">
+        <div id="drag-drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" style="cursor: pointer; text-align: center;">
+            <input type="file" id="csv-file" accept=".csv" onchange="handleFileUpload()" style="display:none;">
+            <p style="margin-bottom: 20px">Drag & Drop your file here or select a file.</p>
+            <button style="margin-bottom: 20px" onClick="document.getElementById('csv-file').click();" class="upload-button">Select File</button>
+        </div>
     </section>
 
-    <table id="columns-container" hidden>
-        <h2>Remap Headers</h2>
-        <p>Here you'll find all of the headers from your file with any of the non supported headers highlighted in red. </p>
-    </table>
-
-    <div id="delimiter-container" hidden>
-        <div>
-            <div>Detected Delimiter: <span id="detected-delimiter"></span></div>
-            <div>
+    <div id="delimiter-container" style="display: none">
+        <div style="margin-bottom: 10px;">
+            <h2 style="text-align: left;">Delimiter Modifier</h2>
+            <p style="text-align: left; margin-bottom: 5px;">This files curent delimiter is: <span style="text-align: left; font-size: 1.2em; color: #005f5f; margin-top: 0;"><strong id="detected-delimiter"></strong></span></p>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <label class="switch">
                 <input type="checkbox" id="change-delimiter-checkbox" onclick="toggleDelimiterField()">
-                <label for="change-delimiter-checkbox">Change Delimiter</label>
-                <input type="text" id="new-delimiter" placeholder="New Delimiter" disabled>
-            </div>
+                <span class="slider"></span>
+            </label>
+            <label for="change-delimiter-checkbox" style="margin-right: 10px; margin-left: 10px; font-size: 14px">Change delimiter to: </label>
+            <select id="new-delimiter" disabled>
+                <option value="," selected>Comma</option>
+                <option value=";">Semicolon</option>
+            </select>
         </div>
     </div>
     
-    <button id="save-button" onclick="saveUpdatedFile()" hidden>Save</button>
+    <div id="columns-container-wrapper" style="display: none;">
+        <div>
+            <h2>Column Headers</h2>
+            <p>Below are the headers from your file. Use 'modify' to match these headers to the desired identifier types and trait values you want to load into your DCN. Any headers that are not known by your DCN will cause ingestions to fail. <a href="https://docs.optable.co/optable-documentation/reference/tabular-data-schema" target="_blank">Learn more</a></p>
+        </div>
+        <table id="columns-container" hidden>
+        </table>
+    </div>
+
+    <div id="button-container">
+        <button id="restart-button" onClick="window.location.reload();" hidden>Restart</button>
+        <button id="save-button" onclick="saveUpdatedFile()" hidden>Save File</button>
+    </div>
 </div>
 
 <script src="js/main.js"></script>

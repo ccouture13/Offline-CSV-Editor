@@ -52,9 +52,9 @@ function displayHeaders() {
     columnsContainer.innerHTML = '';
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = `
-        <th>#</th>
-        <th>Name</th>
-        <th>Modify</th>
+        <th>Index</th>
+        <th>Current Header</th>
+        <th>Header Modifier</th>
         <th>New Header</th>
     `;
     columnsContainer.appendChild(headerRow);
@@ -64,13 +64,28 @@ function displayHeaders() {
         columnItem.innerHTML = `
             <td>${index + 1}</td>
             <td>${header}</td>
-            <td><input type="checkbox" id="rename-${index}" onclick="toggleRenameField(${index})"><label for="rename-${index}">Modify</label></td>
-            <td><input type="text" id="new-name-${index}" placeholder="New Name" disabled></td> <!-- text fields are now disabled, not hidden -->
+            <td>
+                <div style="display: flex; align-items: center;">
+                    <label class="switch">
+                        <input type="checkbox" id="rename-${index}" onclick="toggleRenameField(${index})">
+                        <span class="slider"></span>
+                    </label>
+                    <label for="rename-${index}" style="margin-left: 10px; font-size: 14px">Enable</label>
+                </div>
+            </td>
+            <td>
+                <div class="text-input-container">
+                    <input type="text" id="new-name-${index}" placeholder="Enter New Header" disabled>
+                </div>
+            </td>
         `;
         columnsContainer.appendChild(columnItem);
     });
     columnsContainer.hidden = false;
     document.getElementById('save-button').hidden = false;
+    document.getElementById('restart-button').hidden = false;
+    document.getElementById('columns-container-wrapper').style.display = '';
+    document.getElementById('file-upload-container').style.display = 'none';
 }
 
 
@@ -90,16 +105,14 @@ function detectDelimiter(csvData) {
         detectedDelimiter = ',';
     }
     document.getElementById('detected-delimiter').textContent = detectedDelimiter;
-    document.getElementById('delimiter-container').hidden = false;
+    document.getElementById('delimiter-container').style.display = '';
 }
 
 function toggleDelimiterField() {
     const changeDelimiterCheckbox = document.getElementById('change-delimiter-checkbox');
-    const newDelimiterField = document.getElementById('new-delimiter');
-    newDelimiterField.disabled = !changeDelimiterCheckbox.checked;
+    const newDelimiterDropdown = document.getElementById('new-delimiter');
+    newDelimiterDropdown.disabled = !changeDelimiterCheckbox.checked;  // toggle disabled state based on checkbox
 }
-
-
 
 function saveUpdatedFile() {
     updatedHeaders = headers.slice();
@@ -137,3 +150,17 @@ function saveUpdatedFile() {
     reader.readAsText(file);
 }
 
+function dragOverHandler(ev) {
+    ev.preventDefault();
+}
+
+function dropHandler(ev) {
+    ev.preventDefault();
+    if (ev.dataTransfer.items) {
+        if (ev.dataTransfer.items[0].kind === 'file') {
+            const file = ev.dataTransfer.items[0].getAsFile();
+            document.getElementById('csv-file').files = ev.dataTransfer.files;
+            handleFileUpload();  // Call the function to handle the file upload
+        }
+    }
+}

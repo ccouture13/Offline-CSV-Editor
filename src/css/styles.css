@@ -7,6 +7,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    padding-top: 20px;
 }
 
 #main-container {
@@ -15,28 +16,39 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    min-width: 650px;
+    max-width: 50vw;
 }
 
-#header {
-    text-align: center;
+hr.solid {
+    border-top: 1px solid rgb(233, 233, 233);
+    margin-top: 20px;
+    margin-bottom: 20px ;
+}
+
+#header, h3, #file-upload-container h3 {
+    text-align: left;
     margin-bottom: 20px;
 }
 
 #optable-logo {
-    width: 400px;
+    width: 95%;
     display: block;
     margin: 0 auto 20px auto;
 }
 
-h1 {
+h1, h2 {
+    color:rgba(35, 35, 35, .9);
     margin-bottom: 10px;
+    text-align: left;
 }
 
 p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-#file-upload-container {
+#file-upload-container input[type="file"] {
     margin-bottom: 20px;
 }
 
@@ -44,6 +56,7 @@ p {
     margin: 20px 0;
     border-collapse: collapse;
     width: 100%;
+    padding: 20px;
 }
 
 #columns-container th, #columns-container td {
@@ -53,8 +66,27 @@ p {
 }
 
 #columns-container tr:nth-child(even) {
+    max-width: 20px;
     background-color: #f2f2f2;
+    overflow: hidden;
+    text-overflow: ellipsis;    
 }
+
+.column-item td {
+    max-width: 150px;  /* Set max-width to 150px or as needed */
+    overflow: hidden;  /* Hide overflow */
+    text-overflow: ellipsis;  /* Display ellipsis for overflowed text */
+    white-space: nowrap;  /* Keep text on a single line */
+}
+
+#button-container {
+    width: 95%;
+    margin-left: auto; 
+    margin-right: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 #save-button {
     padding: 10px 20px;
@@ -64,49 +96,155 @@ p {
     background-color: #008CBA;
     color: white;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 #save-button:hover {
     background-color: #005f5f;
 }
 
-#file-upload-container input[type="file"] {
-    margin-bottom: 20px;
-}
-
-#columns-container th, #columns-container td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 8px;
-}
-
-#columns-container tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.column-item label {
+#restart-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border-width: 1px;
+    background-color: white;
+    border-color:rgba(35, 35, 35, .9);
+    color:rgba(35, 35, 35, .9);
+    cursor: pointer;
     margin-left: 10px;
 }
 
-/* Style for the delimiter section to match the table */
-#delimiter-container {
-    border-collapse: collapse;
-    width: 100%;
+#restart-button:hover {
+    /* background-color: #f4f4f4; */
+    box-shadow: 0 0 12px rgba(230, 230, 230, 0.7) inset;}
+
+#delimiter-container, #columns-container-wrapper {
     margin: 20px 0;
-    display: table;  /* Makes the div behave like a table */
-}
-
-#delimiter-container div {
-    display: table-row;  /* Makes the inner divs behave like table rows */
-}
-
-#delimiter-container div div {
-    display: table-cell;  /* Makes the innermost divs behave like table cells */
+    padding: 20px;
     border: 1px solid #ddd;
-    padding: 8px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+#delimiter-container h2, #columns-container-wrapper h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.25em;
     text-align: left;
 }
 
-#delimiter-container div div:first-child {
-    text-align: center;  /* Center text in the first cell */
+#delimiter-container p, #columns-container-wrapper p {
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 17px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2ECC71;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+a {
+    text-decoration: none;
+    color: #005f5f;
+}
+
+#file-upload-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#drag-drop-area {
+    width: 100%;
+    padding: 20px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #005f5f;
+}
+
+#delimiter-container div {
+    display: block;
+}
+
+#delimiter-container div > div {
+    align-self: flex-start;
+}
+
+.text-input-container input, #new-delimiter {
+    width: calc(100% - 16px); /* adjusted to account for padding */
+    padding: 8px;
+    box-sizing: border-box; /* ensures padding is included in the element's total width and height */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#new-delimiter {
+    max-width: 150px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f9f9f9;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="%23000"><polygon points="5,8 10,13 15,8"></polygon></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%, 0 0;
+    background-size: 10px auto, 100%;
 }
