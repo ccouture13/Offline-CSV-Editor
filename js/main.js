@@ -1,4 +1,3 @@
-// Utility Functions
 function validateFile(file) {
     const fileExtension = file.name.split('.').pop().toLowerCase();
     return fileExtension === 'csv';
@@ -9,7 +8,6 @@ function errorHandler(error) {
     alert('An error occurred: ' + error.message);
 }
 
-// File Saving Function
 function saveFile(data, filename) {
     const blob = new Blob([data], { type: 'text/csv' });
     const link = document.createElement('a');
@@ -20,7 +18,6 @@ function saveFile(data, filename) {
     document.body.removeChild(link);
 }
 
-// Core Functions
 let headers = [];
 let updatedHeaders = [];
 
@@ -92,7 +89,7 @@ function displayHeaders() {
 function toggleRenameField(index) {
     const renameCheckbox = document.getElementById(`rename-${index}`);
     const renameField = document.getElementById(`new-name-${index}`);
-    renameField.disabled = !renameCheckbox.checked;  // toggle disabled state based on checkbox
+    renameField.disabled = !renameCheckbox.checked;
 }
 
 let detectedDelimiter = '';
@@ -111,7 +108,7 @@ function detectDelimiter(csvData) {
 function toggleDelimiterField() {
     const changeDelimiterCheckbox = document.getElementById('change-delimiter-checkbox');
     const newDelimiterDropdown = document.getElementById('new-delimiter');
-    newDelimiterDropdown.disabled = !changeDelimiterCheckbox.checked;  // toggle disabled state based on checkbox
+    newDelimiterDropdown.disabled = !changeDelimiterCheckbox.checked;
 }
 
 function saveUpdatedFile() {
@@ -120,7 +117,7 @@ function saveUpdatedFile() {
         const renameCheckbox = document.getElementById(`rename-${index}`);
         if (renameCheckbox.checked) {
             const newName = document.getElementById(`new-name-${index}`).value;
-            updatedHeaders[index] = newName || updatedHeaders[index];  // fall back to original name if new name is empty
+            updatedHeaders[index] = newName || updatedHeaders[index]; 
         }
     });
 
@@ -131,7 +128,7 @@ function saveUpdatedFile() {
     reader.onload = function(event) {
         let updatedCsvData = event.target.result;
         const rows = updatedCsvData.split('\n');
-        rows[0] = updatedHeaders.join(',');  // Update the headers
+        rows[0] = updatedHeaders.join(',');
         updatedCsvData = rows.join('\n');
 
         const newDelimiterCheckbox = document.getElementById('change-delimiter-checkbox');
@@ -156,11 +153,9 @@ function dragOverHandler(ev) {
 
 function dropHandler(ev) {
     ev.preventDefault();
-    if (ev.dataTransfer.items) {
-        if (ev.dataTransfer.items[0].kind === 'file') {
-            const file = ev.dataTransfer.items[0].getAsFile();
-            document.getElementById('csv-file').files = ev.dataTransfer.files;
-            handleFileUpload();  // Call the function to handle the file upload
-        }
+    if (ev.dataTransfer.items && ev.dataTransfer.items[0].kind === 'file') {
+          const file = ev.dataTransfer.items[0].getAsFile();
+                document.getElementById('csv-file').files = ev.dataTransfer.files;
+                handleFileUpload();
     }
 }

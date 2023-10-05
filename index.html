@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optable Offline CSV Editor</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div id="main-container">
     <div id="header">
-        <img src="assets/title.svg" alt="Optable Logo" id="optable-logo">
+        <img src="assets/title.svg" alt="Title Card" id="title-card">
     </div>
-    <p>Upload your file and this tool will automatically identify its delimiter and headers. Once detected, you can adjust the delimiter and remap headers. After modifications, save the updated file to your device, ready for uploading to your DCN.</p>
-    <p>This tool can be used offline and processing happens directly in your browser for added security.</p>
+    <p>Select a file to detect it's <strong>headers</strong> and <strong>delimiter</strong>. You can then change the delimiter, rename headers and save an updated file.</p>
+    <p>This tool is fully offline and processing happens directly in your browser for added peace of mind.</p>
     <hr class="solid">
 
     <section id="file-upload-container">
@@ -28,7 +29,7 @@
     <div id="delimiter-container" style="display: none">
         <div style="margin-bottom: 10px;">
             <h2 style="text-align: left;">Delimiter Modifier</h2>
-            <p style="text-align: left; margin-bottom: 5px;">This files curent delimiter is: <span style="text-align: left; font-size: 1.2em; color: #005f5f; margin-top: 0;"><strong id="detected-delimiter"></strong></span></p>
+            <p style="text-align: left; margin-bottom: 5px;">This files curent delimiter is: <span style="text-align: left; font-size: 1.2em; color: #393D5E; margin-top: 0;"><strong id="detected-delimiter"></strong></span></p>
         </div>
         <div style="display: flex; align-items: center;">
             <label class="switch">
@@ -45,8 +46,8 @@
     
     <div id="columns-container-wrapper" style="display: none;">
         <div>
-            <h2>Column Headers</h2>
-            <p>Below are the headers from your file. Use 'modify' to match these headers to the desired identifier types and trait values you want to load into your DCN. Any headers that are not known by your DCN will cause ingestions to fail. <a href="https://docs.optable.co/optable-documentation/reference/tabular-data-schema" target="_blank">Learn more</a></p>
+            <h2>Column Modifier</h2>
+            <p>Below are the headers that were detected in your CSV. Use 'modify' to match these headers to their specific identifier and trait types you want to load into your DCN. <a href="https://docs.optable.co/optable-documentation/reference/tabular-data-schema" target="_blank">Learn more</a></p>
         </div>
         <table id="columns-container" hidden>
         </table>

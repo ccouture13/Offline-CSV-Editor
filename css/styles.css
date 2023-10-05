@@ -7,7 +7,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    padding-top: 20px;
 }
 
 #main-container {
@@ -16,8 +15,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-width: 650px;
-    max-width: 50vw;
+    min-width: 750px;
+    max-width: 750px;
 }
 
 hr.solid {
@@ -31,21 +30,28 @@ hr.solid {
     margin-bottom: 20px;
 }
 
-#optable-logo {
+#title-card {
     width: 95%;
     display: block;
-    margin: 0 auto 20px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 h1, h2 {
-    color:rgba(35, 35, 35, .9);
-    margin-bottom: 10px;
+    color:#393D5E;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+h4 {
+    color:#393D5E;
     text-align: left;
 }
 
 p {
     margin-bottom: 10px;
     text-align: left;
+    color: #393D5E;
 }
 
 #file-upload-container input[type="file"] {
@@ -77,9 +83,9 @@ p {
 }
 
 .column-item td {
-    overflow: hidden;  /* Hide overflow */
-    text-overflow: ellipsis;  /* Display ellipsis for overflowed text */
-    white-space: nowrap;  /* Keep text on a single line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: center;
 }
 
@@ -97,31 +103,32 @@ p {
     font-size: 16px;
     border: none;
     border-radius: 4px;
-    background-color: #008CBA;
+    background-color: #0AA5A5;
     color: white;
     cursor: pointer;
     margin-left: 10px;
 }
 
 #save-button:hover {
-    background-color: #005f5f;
+    background-color: #53C0C0;
 }
 
 #restart-button {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
-    border-width: 1px;
+    border-width: 2px;
     background-color: white;
-    border-color:rgba(35, 35, 35, .9);
-    color:rgba(35, 35, 35, .9);
+    border-color:#080C36;
+    color: #080C36;
     cursor: pointer;
     margin-left: 10px;
 }
 
 #restart-button:hover {
-    /* background-color: #f4f4f4; */
-    box-shadow: 0 0 12px rgba(230, 230, 230, 0.7) inset;}
+    color: #080C36;
+    border-color: #080C36;
+}
 
 #delimiter-container, #columns-container-wrapper {
     margin: 20px 0;
@@ -215,13 +222,13 @@ a {
     font-size: 16px;
     border: none;
     border-radius: 4px;
-    background-color: #008CBA;
+    background-color: #0AA5A5;
     color: white;
     cursor: pointer;
 }
 
 .upload-button:hover {
-    background-color: #005f5f;
+    background-color: #53C0C0;
 }
 
 #delimiter-container div {
@@ -233,9 +240,9 @@ a {
 }
 
 .text-input-container input, #new-delimiter {
-    width: calc(100% - 16px); /* adjusted to account for padding */
+    width: calc(100% - 16px);
     padding: 8px;
-    box-sizing: border-box; /* ensures padding is included in the element's total width and height */
+    box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
